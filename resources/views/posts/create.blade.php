@@ -10,7 +10,9 @@
               <hr>
             {!! Form::open(['route' => 'posts.store']) !!}
     				{{ Form::label('title', '标题:')}}
-    				{{ Form::text('title', null, array('class' => 'form-control'))}}
+    				{{ Form::text('title', null, array('class' => 'form-control')) }}
+{{--                     {{ Form::label('slug', 'Slug:') }}
+                    {{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255')) }} --}}
     				{{ Form::label('body', '内容:')}}
     				{{ Form::textarea('body', null, array('class' => 'form-control'))}}
     				{{ Form::submit('发布帖子', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px'))}}

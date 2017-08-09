@@ -13,27 +13,14 @@
 
     <div class="row">
         <div class = "col-md-8">   
-            <div class = "post"> 
-                <h3>帖子主题</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...   
-                </p>
-                <a href="#" class="btn btn-primary">查看更多</a>
-            </div>
 
-            <hr>
-
-            <div class = "post"> 
-                <h3>帖子主题</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...   
-                </p>
-                <a href="#" class="btn btn-primary">查看更多</a>
-            </div>
-
-            <hr>
+            @foreach($posts as $post)
+                <div class = "post"> 
+                    <h3>{{ $post->title }}</h3>
+                    <p>{{ $post->body }}</p>
+                    <a href={{  route('posts.show', $post->id) }} class="btn btn-primary">查看更多</a>
+                </div>
+            @endforeach
 
             <div class = "post"> 
                 <h3>帖子主题</h3>

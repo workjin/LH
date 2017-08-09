@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+
 class PagesController extends Controller{
 
 	public function getIndex(){
-		return view('pages/welcome');
+		$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
+		return view('pages.welcome')->withPosts($posts);
 	}
 
 	public function getContact(){
@@ -13,16 +16,15 @@ class PagesController extends Controller{
 	}
 
 	public function getAbout(){
-		$first = 'work';
+		$first = 'jj';
 		$last = 'jin';
 
 		$full = $first . ' ' . $last;
-		$email = 'workjin1@gmail.com';
+		$email = 'jj@gmail.com';
 
 		$data['email'] = $email;
 		$data['fullname'] = $full;
 
-		//PASS USING ARRAY
 		return view('pages/about')->with("data", $data);
 
 		//MULTIPLE INSTANCES

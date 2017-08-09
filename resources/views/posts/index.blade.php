@@ -39,7 +39,7 @@
 								{{ @strlen($post->body)>50 ? "..." : "" }}
 							</td>
 							<td>
-								{{ @date('M j, Y', strtotime($post->create_at)) }}
+								{{ @date('M j, Y', strtotime($post->created_at)) }}
 							</td>
 							<td>
 								<a href={{ route('posts.show', $post->id) }} class="btn btn-default btn-sm">查看</a>
@@ -49,6 +49,11 @@
 					@endforeach
 				</tbody>
 			</table>
+
+			<div class = "text-center">
+				{!! $posts->links(); !!}
+			</div>
+			
 		</div>	
 	</div>
 

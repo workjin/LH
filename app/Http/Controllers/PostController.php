@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+        $posts = Post::orderby('id', 'DESC')->paginate(5);
         return view('posts.index')->withPosts($posts);
     }
 
@@ -44,12 +44,14 @@ class PostController extends Controller
         //validate data
         $this->validate($request, array(
                 'title' => 'required|max:255',
+                // 'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
                 'body' => 'required'
             ));
 
         //store in db
         $post = new Post();
         $post->title = $request->title;
+        // $post->slug = $request->slug;
         $post->body = $request->body;
         $post->save();
 
@@ -68,6 +70,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+
         return view('posts.show')->withPost($post);
     }
 
@@ -92,7 +95,23 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validate data
+        $this->validate($request, array(
+                'title' => 'required|max:255',
+                'body' => 'required'
+            ));
+
+        //save in db
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        //flash success data render in html
+        Session::flash('success', '发布新帖子');
+
+        //redirect to show page
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -104,5 +123,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = POST::find($id);
+        $post->delete();
+        Session::flash('success', '删除帖子');
+
+        return redirect()->route('posts.index');
     }
 }

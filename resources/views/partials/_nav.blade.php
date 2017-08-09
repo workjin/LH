@@ -14,20 +14,20 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="{{Request::is('/') ? 'active':''}}"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+          <li class="{{Request::is('/') ? 'active':''}}"><a href="/">主页<span class="sr-only">(current)</span></a></li>
           <li class="{{Request::is('about') ? 'active':''}}"><a href="/about">关于</a></li>
           <li class="{{Request::is('contact') ? 'active':''}}"><a href="/contact">联系我们</a></li>
         </ul>
         <form class="navbar-form navbar-left">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="搜索">
           </div>
           <button type="submit" class="btn btn-default">提交</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">登录</a></li>
+          <li><a href="auth/login">登录</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人资料<span class="caret"></span></a>
+            <a href="auth/login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人资料<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
