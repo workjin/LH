@@ -15,14 +15,18 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category')->nullable();
+            $table->integer('issue_num');
+            $table->tinyInteger('platform');
             $table->string('title');
             $table->text('body');
+            $table->integer('id_uploader')->unsingned();
+            // $table->string('uploader')->nullable();
             $table->integer('like')->unsigned()->default(0);
             $table->integer('view')->unsigned()->default(0);
-            $table->string('uploader')->nullable();
-            $table->boolean('prediction')->default(false);
+            $table->char('predict_result', 1)->default('2');
+            $table->tinyInteger('predict_type')->nullable();
             $table->timestamps();
+            $table->string('remark')->nullable();
         });
     }
 

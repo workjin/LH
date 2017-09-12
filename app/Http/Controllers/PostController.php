@@ -7,18 +7,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class PostController extends Controller
 {
+
+    //如为登录 转接到登录
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
         $posts = Post::orderby('id', 'DESC')->paginate(5);
         return view('posts.index')->withPosts($posts);
     }
@@ -48,11 +57,18 @@ class PostController extends Controller
                 'body' => 'required'
             ));
 
+        $result = DB::table('lottery_results')
+                    ->orderby('issue_date', 'desc')
+                    ->first();
+        $issue_num = $result->issue_num + 1;
+
         //store in db
         $post = new Post();
+        $post->id_uploader = Auth::id();
         $post->title = $request->title;
-        // $post->slug = $request->slug;
         $post->body = $request->body;
+        $post->issue_num = $issue_num;
+        $post->platform = $request->id_platform;
         $post->save();
 
         Session::flash('success', '成功发布新帖子');

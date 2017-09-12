@@ -3,13 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller{
+
 
 	public function getIndex(){
 		$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
 		return view('pages.welcome')->withPosts($posts);
 	}
+
+	public function getLotteryResult(){
+		// $posts = Post::$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
+		$results = DB::table('lottery_results')
+                    ->orderby('issue_date', 'desc')
+                    ->get();
+		return view('pages.lottery_result')->withResults($results);
+	}
+
 
 	public function getContact(){
     	return view('pages/contact');

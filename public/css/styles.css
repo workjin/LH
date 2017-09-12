@@ -1,3 +1,7 @@
 .form-spacing-top {
 	margin-top: 30px;
 }
+
+.redBoClass{ background:#f00; color:#fff;}
+.blueBoClass{ background:#00f; color:#fff;}
+.greenBoClass{ background:#008000; color:#fff;}

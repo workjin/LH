@@ -6,11 +6,11 @@
 	
 	<div class ="row">
 		<div class= "col-md-10">
-			<h1>所有帖子</h1>
+			<h1>{{$platform}}</h1>
 		</div>
 
 		<div class= "col-md-2">
-			<a href={{ route('posts.create')}} class="btn btn-lg btn-block btn-primary">创建新帖子</a>
+			<a href={{ route('create', $id)}} class="btn btn-lg btn-block btn-primary">创建新帖子</a>
 		</div>
 
 		<div class= "col-md-12">

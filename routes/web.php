@@ -26,14 +26,20 @@
 // Route::post('auto/register', 'Auth\RegisterController@postRegister');
 
 
-Route::get('/', 'PagesController@getIndex');
+//可用php artisan route:list 检测
+Route::get('/', 'HomeController@index');
 Route::get('about', 'PagesController@getAbout');
 Route::get('contact', 'PagesController@getContact');
 Route::get('hello', 'PagesController@getHello');
+Route::get('result', 'PagesController@getLotteryResult')->name('result');
 
 //自动添加PostController路径
-//可用php artisan route:list 检测
 Route::resource('posts', 'PostController');
 Auth::routes();
 
+//name 代表昵称
 Route::get('/home', 'HomeController@index')->name('home');
+
+//添加板块路径
+Route::get('/platform/{id}', 'PlatformController@index')->name('platform');
+Route::get('/create/{platform}', 'PlatformController@create')->name('create');

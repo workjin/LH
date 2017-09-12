@@ -43,8 +43,10 @@
 				</div>
 
 				<dir class = "row">
-					<div class ="col-md-12">
-						{{ Html::linkRoute('posts.index', '<<查看所有帖子>>', array(), ['class' => 'btn btn-default btn-block btn-h1-spacing']) }}
+					<div class ="col-md-10">
+						{{ Html::linkRoute('platform', '查看所有帖子', array($post->platform), ['class' => 'btn btn-default btn-block btn-h1-spacing']) }}
+
+						{{-- {{ Html::linkRoute('posts.index', '<<查看所有帖子>>', array(), ['class' => 'btn btn-default btn-block btn-h1-spacing']) }} --}}
 					</div>
 				</dir>
 

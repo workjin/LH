@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSlugToPosts extends Migration
+class CreateRecordVisitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class AddSlugToPosts extends Migration
      */
     public function up()
     {
-        //
-        // Schema::table('posts', function($table) {
-        //     $table->string('slug')->unique()->after('body');
-        // });
+        Schema::create('record_visits', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_user');
+            $table->integer('id_post');
+            $table->boolean('mark')->default(0);
+        });
     }
 
     /**
@@ -26,9 +28,6 @@ class AddSlugToPosts extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('posts', function($table){
-            $table->dropColumn('slug'); 
-        });
+        Schema::dropIfExists('record_visits');
     }
 }
