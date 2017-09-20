@@ -1,0 +1,52 @@
+六合至尊
+15640959407
+福建禁
+
+
+laravel路径	C:\Users\work\AppData\Roaming\Composer
+
+Liuhezhizun: Application key [QDEtBeext2ggLxgHWZExprbwP1YrRKNO] set successfully.
+
+没有artisan：
+	1. 删除composer.lock
+	2. run：composer install
+
+
+update database: 
+	php artisan migrate
+	php artisan make:refresh
+
+
+sqlserver port: 3305
+
+
+php artisan make:model Post --migration
+php artisan make:controller PostController --resource
+php artisan route:list
+
+php artisan db:seed
+php artisan make:seeder <seeder name>
+php artisan db:seed --class=<seeder name>
+
+使用form：
+1. composer require "laravelcollective/html":"^5.4.0"
+2. config/app加入serviceprovider  Collective\Html\HtmlServiceProvider::class,
+
+
+Session::flash		//exists for one page request
+Session::put		//exists until the session is removed
+
+
+Session位置: 
+	_messages.blade.php
+
+modify table column slug:
+	1. 添加"doctrine/dbal" : "*" 到 require-dev   composer.json
+	2. composer.update
+
+登录校准：
+D:\Project\liuhe\vendor\laravel\framework\src\Illuminate\Routing\router.php
+
+php artisan make:auth" produces all the authentication scaffolding required for the authentication process.
+
+To continue following along with this tutorial using the "php artisan make:auth" command you will need to tidy up your install by deleting the "layouts folder" folder within the "resources folder", and also change the "@extends('layouts.app')" to "@extends('main')" in the login.blade.php and register.blade.php views within the "resources/views/auth" folder. Also you should then run "php artisan route:list" to see the names and locations of the auth routes.?
